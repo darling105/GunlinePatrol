@@ -7,14 +7,16 @@ class EntranceForwarder : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (owner != null)
-            owner.HandleEntranceTrigger(entranceIndex, other);
+        if (owner != null) owner.HandleEntranceTrigger(entranceIndex, other);
+    }
+    void OnTriggerStay(Collider other)
+    {
+        if (owner != null) owner.HandleEntranceTrigger(entranceIndex, other);
     }
 
-    // optional: visualize inward arrow
     void OnDrawGizmosSelected()
     {
-        if (owner == null) return;
+        if (owner == null || entranceIndex < 0 || owner.entrances == null) return;
         var e = owner.entrances[entranceIndex];
         if (e == null || e.entranceCollider == null) return;
         Gizmos.color = Color.yellow;

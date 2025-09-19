@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
             if (shootButton) shootButton.interactable = false;
 
             if (GameManager.HasInstance)
-                GameManager.Instance.LoseGame();
+                GameManager.Instance.NotifyOutOfAmmo();
 
             Debug.Log("Out of ammo -> LOSE");
         }
